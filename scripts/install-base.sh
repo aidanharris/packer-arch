@@ -23,6 +23,7 @@ MIRRORLIST="https://www.archlinux.org/mirrorlist/?country=${COUNTRY}&protocol=ht
 
 echo "==> Setting local mirror"
 curl -s "$MIRRORLIST" |  sed 's/^#Server/Server/' > /etc/pacman.d/mirrorlist
+sed -i '0,/## Score:/{s/Score:/Aidanharris Mirror\nServer = https:\/\/aidanharris.me\/archlinux\/repo\/\$repo\/os\/\$arch\n## Score:/}' /etc/pacman.d/mirrorlist
 
 echo "==> Clearing partition table on ${DISK}"
 /usr/bin/sgdisk --zap ${DISK}
