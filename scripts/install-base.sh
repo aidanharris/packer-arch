@@ -24,6 +24,7 @@ MIRRORLIST="https://www.archlinux.org/mirrorlist/?country=${COUNTRY}&protocol=ht
 echo "==> Setting local mirror"
 curl -s "$MIRRORLIST" |  sed 's/^#Server/Server/' > /etc/pacman.d/mirrorlist
 sed -i '0,/## United States/{s/## United States/## Aidanharris Mirror\nServer = https:\/\/aidanharris.me\/archlinux\/repo\/\$repo\/os\/\$arch\n## United States/}' /etc/pacman.d/mirrorlist
+sed -i 's/#\[testing\]/\[aidanharris\]\nSigLevel = Optional TrustAll\nServer = https:\/\/aidanharris.me\/archlinux\/aidanharris\/pkgs\n\n#\[testing\]/g' /etc/pacman.conf
 
 echo "==> Clearing partition table on ${DISK}"
 /usr/bin/sgdisk --zap ${DISK}
