@@ -24,7 +24,6 @@ MIRRORLIST="https://www.archlinux.org/mirrorlist/?country=${COUNTRY}&protocol=ht
 echo "==> Setting local mirror"
 curl -s "$MIRRORLIST" |  sed 's/^#Server/Server/' > /etc/pacman.d/mirrorlist
 sed -i '0,/## United States/{s/## United States/## Aidanharris Mirror\nServer = https:\/\/aidanharris.me\/archlinux\/repo\/\$repo\/os\/\$arch\n## United States/}' /etc/pacman.d/mirrorlist
-sed -i 's/#\[testing\]/\[aidanharris\]\nSigLevel = Optional TrustAll\nServer = https:\/\/aidanharris.me\/archlinux\/aidanharris\/pkgs\n\n#\[testing\]/g' /etc/pacman.conf
 
 echo "==> Clearing partition table on ${DISK}"
 /usr/bin/sgdisk --zap ${DISK}
@@ -51,6 +50,8 @@ echo '==> Bootstrapping the base installation'
 /usr/bin/arch-chroot ${TARGET_DIR} syslinux-install_update -i -a -m
 /usr/bin/sed -i "s|sda3|${ROOT_PARTITION##/dev/}|" "${TARGET_DIR}/boot/syslinux/syslinux.cfg"
 /usr/bin/sed -i 's/TIMEOUT 50/TIMEOUT 10/' "${TARGET_DIR}/boot/syslinux/syslinux.cfg"
+
+/usr/bin/sed -i 's/#\[testing\]/\[aidanharris\]\nSigLevel = Optional TrustAll\nServer = https:\/\/aidanharris.me\/archlinux\/aidanharris\/pkgs\n\n#\[testing\]/g' ${TARGET_DIR}/etc/pacman.conf
 
 echo '==> Generating the filesystem table'
 /usr/bin/genfstab -p ${TARGET_DIR} >> "${TARGET_DIR}/etc/fstab"
