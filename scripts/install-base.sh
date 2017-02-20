@@ -52,7 +52,7 @@ echo '==> Bootstrapping the base installation'
 /usr/bin/sed -i 's/TIMEOUT 50/TIMEOUT 10/' "${TARGET_DIR}/boot/syslinux/syslinux.cfg"
 
 /usr/bin/sed -i 's/#\[testing\]/\[aidanharris\]\nSigLevel = Optional TrustAll\nServer = https:\/\/aidanharris.me\/archlinux\/aidanharris\/pkgs\n\n#\[testing\]/g' ${TARGET_DIR}/etc/pacman.conf
-/usr/bin/arch-chroot ${TARGET_DIR} pacman -Syyy /usr/bin/pacman
+/usr/bin/arch-chroot ${TARGET_DIR} pacman -Syyy
 
 echo '==> Generating the filesystem table'
 /usr/bin/genfstab -p ${TARGET_DIR} >> "${TARGET_DIR}/etc/fstab"
