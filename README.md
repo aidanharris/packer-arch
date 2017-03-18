@@ -37,13 +37,21 @@ Assuming that you already have Packer,
 [VirtualBox](https://www.virtualbox.org/), and Vagrant installed, you
 should be good to clone this repo and go:
 
-    $ git clone https://github.com/elasticdog/packer-arch.git
+    $ git clone https://github.com/aidanharris/packer-arch.git
     $ cd packer-arch/
     $ packer build -only=virtualbox-iso arch-template.json
 
 Then you can import the generated box into Vagrant:
 
     $ vagrant box add arch output/packer_arch_virtualbox.box
+
+#### Pre-Built Releases
+
+Pre-built releases are available [here](https://github.com/aidanharris/packer-arch/releases).
+
+You can add the latest release as follows:
+
+    $ vagrant box add https://github.com/aidanharris/packer-arch/releases/download/v0.12.0/packer_arch_virtualbox.box
 
 ### VMware Provider
 
@@ -53,7 +61,7 @@ Assuming that you already have Packer,
 Vagrant with the VMware provider installed, you should be good to clone
 this repo and go:
 
-    $ git clone https://github.com/elasticdog/packer-arch.git
+    $ git clone https://github.com/aidanharris/packer-arch.git
     $ cd packer-arch/
     $ packer build -only=vmware-iso arch-template.json
 
@@ -68,7 +76,7 @@ Assuming that you already have Packer,
 Vagrant with the Parallels provider installed, you should be good to clone
 this repo and go:
 
-    $ git clone https://github.com/elasticdog/packer-arch.git
+    $ git clone https://github.com/aidanharris/packer-arch.git
     $ cd packer-arch/
     $ packer build -only=parallels-iso arch-template.json
 
@@ -83,7 +91,7 @@ Assuming that you already have Packer, Vagrant with the
 plugin installed, you should be good to clone
 this repo and go:
 
-    $ git clone https://github.com/elasticdog/packer-arch.git
+    $ git clone https://github.com/aidanharris/packer-arch.git
     $ cd packer-arch/
     $ packer build -only=libvirt arch-template.json
 
