@@ -51,7 +51,7 @@ Pre-built releases are available [here](https://github.com/aidanharris/packer-ar
 
 You can add the latest release as follows:
 
-    $ vagrant box add https://github.com/aidanharris/packer-arch/releases/download/v0.48.0/packer_arch_virtualbox.box
+    $ vagrant box add https://github.com/aidanharris/packer-arch/releases/download/v0.49.0/packer_arch_virtualbox.box
 
 ### VMware Provider
 
